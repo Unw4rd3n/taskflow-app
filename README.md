@@ -61,47 +61,6 @@
 
 ## 🚀 Быстрый старт
 
-### Локальный запуск
-
-1. **Откройте файл напрямую:**
-   - Просто откройте `index.html` в браузере
-   - Или запустите `start.html` для инструкций
-
-2. **Или через терминал:**
-```bash
-# Windows
-start index.html
-
-# macOS
-open index.html
-
-# Linux
-xdg-open index.html
-```
-
-### Деплой на GitHub Pages
-
-1. **Создайте репозиторий на GitHub:**
-   - Название: `taskflow-app`
-   - Сделайте публичным
-
-2. **Загрузите файлы:**
-```bash
-git init
-git add .
-git commit -m "TaskFlow app"
-git branch -M main
-git remote add origin https://github.com/ВАШ_USERNAME/taskflow-app.git
-git push -u origin main
-```
-
-3. **Включите GitHub Pages:**
-   - Settings → Pages → Deploy from branch 'main'
-
-4. **Ваше приложение:**
-```
-https://ВАШ_USERNAME.github.io/taskflow-app
-```
 
 ### Альтернативные способы запуска
 
@@ -196,24 +155,7 @@ taskflow-app/
 
 Приложение готово для деплоя на любом статическом хостинге:
 
-- **GitHub Pages**
-- **Netlify**
-- **Vercel**
-- **Firebase Hosting**
-- **AWS S3**
 
-### Команды сборки
-
-```bash
-# Проверка готовности
-npm run build
-
-# Локальный сервер
-npm run serve
-
-# Деплой (настройте под свой хостинг)
-npm run deploy
-```
 
 ## 🌐 PWA возможности
 
@@ -281,13 +223,6 @@ npm run deploy
 - [ ] Темы оформления
 - [ ] Плагины
 
-## 🤝 Участие в разработке
-
-1. Fork репозитория
-2. Создайте feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit изменения (`git commit -m 'Add some AmazingFeature'`)
-4. Push в branch (`git push origin feature/AmazingFeature`)
-5. Откройте Pull Request
 
 ## 📄 Лицензия
 
@@ -298,7 +233,7 @@ npm run deploy
 **Лукьянов Никита**
 - Email: nickfgh@mail.ru
 - Telegram: @infoiseasy
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@Unw4rd3n](https://github.com/Unw4rd3n)
 
 ## 🙏 Благодарности
 
