@@ -1,0 +1,84 @@
+{
+  "name": "taskflow-app",
+  "version": "1.0.0",
+  "description": "TaskFlow - Современное веб-приложение для управления задачами с красивым интерфейсом",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=/",
+    "build": "echo 'No build process needed for vanilla JS app'",
+    "serve": "npx http-server . -p 8080",
+    "deploy": "echo 'Ready for deployment to any static hosting service'"
+  },
+  "keywords": [
+    "task-management",
+    "productivity",
+    "web-app",
+    "vanilla-js",
+    "portfolio",
+    "pwa",
+    "modern-ui",
+    "responsive",
+    "localStorage",
+    "dark-theme",
+    "light-theme"
+  ],
+  "author": {
+    "name": "Лукьянов Никита",
+    "email": "nickfgh@mail.ru",
+    "url": "https://github.com/yourusername"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/taskflow-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/taskflow-app/issues"
+  },
+  "homepage": "https://yourusername.github.io/taskflow-app",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "pwa": {
+    "name": "TaskFlow",
+    "short_name": "TaskFlow",
+    "description": "Современный менеджер задач",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#4ecdc4",
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>",
+        "sizes": "192x192",
+        "type": "image/svg+xml"
+      },
+      {
+        "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>",
+        "sizes": "512x512",
+        "type": "image/svg+xml"
+      }
+    ]
+  },
+  "files": [
+    "index.html",
+    "styles.css",
+    "script.js",
+    "manifest.json",
+    "sw.js",
+    "README.md"
+  ]
+}

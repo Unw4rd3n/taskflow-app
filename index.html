@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="TaskFlow - Современное веб-приложение для управления задачами с красивым интерфейсом">
+    <meta name="keywords" content="task management, productivity, веб-приложение, управление задачами">
+    <meta name="author" content="Лукьянов Никита">
+    
+    <title>TaskFlow - Современный менеджер задач</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1a1a1a">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div id="background-container">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="particles-container"></div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tasks"></i>
+                    <span>TaskFlow</span>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="settings-btn" id="settingsBtn" aria-label="Настройки">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section" id="welcomeSection">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">
+                        <span class="title-line">Добро пожаловать в</span>
+                        <span class="title-line highlight">TaskFlow</span>
+                        <span class="title-line">Ваш персональный менеджер задач</span>
+                    </h1>
+                    <p class="welcome-subtitle">Организуйте свою работу эффективно с помощью современного интерфейса</p>
+                    <button class="get-started-btn" id="getStartedBtn">
+                        <i class="fas fa-rocket"></i>
+                        <span>Начать работу</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Dashboard Section -->
+            <section class="dashboard-section" id="dashboardSection" style="display: none;">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="totalTasks">0</h3>
+                            <p class="stat-label">Всего задач</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="completedTasks">0</h3>
+                            <p class="stat-label">Выполнено</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="pendingTasks">0</h3>
+                            <p class="stat-label">В процессе</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" id="streakDays">0</h3>
+                            <p class="stat-label">Дней подряд</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Task Form -->
+                <div class="add-task-section">
+                    <div class="add-task-form">
+                        <div class="form-group">
+                            <input type="text" id="taskInput" placeholder="Добавить новую задачу..." maxlength="100">
+                            <button class="add-btn" id="addTaskBtn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="form-options">
+                            <select id="prioritySelect" class="priority-select">
+                                <option value="low">Низкий приоритет</option>
+                                <option value="medium" selected>Средний приоритет</option>
+                                <option value="high">Высокий приоритет</option>
+                            </select>
+                            <input type="date" id="dueDateInput" class="due-date-input">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">Все задачи</button>
+                    <button class="filter-tab" data-filter="pending">В процессе</button>
+                    <button class="filter-tab" data-filter="completed">Выполненные</button>
+                    <button class="filter-tab" data-filter="high">Высокий приоритет</button>
+                </div>
+
+                <!-- Tasks List -->
+                <div class="tasks-container">
+                    <div class="tasks-list" id="tasksList">
+                        <!-- Tasks will be dynamically added here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Settings Modal -->
+        <div class="modal" id="settingsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Настройки</h2>
+                    <button class="close-btn" id="closeSettingsBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <label for="themeSelect">Тема оформления:</label>
+                        <select id="themeSelect" class="theme-select">
+                            <option value="dark">Темная</option>
+                            <option value="light">Светлая</option>
+                            <option value="auto">Автоматически</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label for="notificationsToggle">Уведомления:</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="notificationsToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <label for="autoSaveToggle">Автосохранение:</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="autoSaveToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="resetSettingsBtn">Сбросить</button>
+                    <button class="btn btn-danger" id="clearDataBtn">Очистить данные</button>
+                    <button class="btn btn-primary" id="saveSettingsBtn">Сохранить</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Details Modal -->
+        <div class="modal" id="taskModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Детали задачи</h2>
+                    <button class="close-btn" id="closeTaskBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="task-details" id="taskDetails">
+                        <!-- Task details will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
